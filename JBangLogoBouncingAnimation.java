@@ -2,8 +2,13 @@
 //DEPS org.openjfx:javafx-graphics:11.0.2:${os.detected.jfxname}
 
 // TODO: how to make this work? FILES jbang-logo-green.png
+//FILES images/jbang-logo-green.png
+//FILES images/jbang-logo-multicolors.png
+//FILES images/jbang-logo-red.png
+//FILES images/jbang-logo.png
 
-import java.io.FileInputStream; 
+import java.io.FileInputStream;
+import java.io.IOException;
 
 import javafx.animation.AnimationTimer; 
 import javafx.animation.RotateTransition; 
@@ -32,12 +37,12 @@ public class JBangLogoBouncingAnimation extends Application {
 	private boolean movingUP, movingLeft;
 	
    @Override 
-   public void start(Stage stage) {         
+   public void start(Stage stage) throws IOException {
       //Creating an image 
-      imageA = new Image("https://raw.githubusercontent.com/tivrfoa/javafx-basic-animation/main/images/jbang-logo-green.png");  
-      imageB = new Image("https://raw.githubusercontent.com/tivrfoa/javafx-basic-animation/main/images/jbang-logo-red.png");  
-      imageC = new Image("https://raw.githubusercontent.com/tivrfoa/javafx-basic-animation/main/images/jbang-logo.png");  
-      imageD = new Image("https://raw.githubusercontent.com/tivrfoa/javafx-basic-animation/main/images/jbang-logo-multicolors.png");  
+      imageA = new Image(getClass().getResource("/images/jbang-logo-green.png").openStream());
+      imageB = new Image(getClass().getResource("/images/jbang-logo-red.png").openStream());
+      imageC = new Image(getClass().getResource("/images/jbang-logo.png").openStream());
+      imageD = new Image(getClass().getResource("/images/jbang-logo-multicolors.png").openStream());
       
       //Setting the image view 
       imageView = new ImageView(imageA); 
